@@ -1,32 +1,32 @@
 commands.addUserCommand(
-	["postD[elicious]"],//ƒRƒ}ƒ“ƒh–¼
-	"this plugin posts Delicious your bookmark",//ƒRƒ}ƒ“ƒh‚ÉŠÖ‚·‚éà–¾CƒRƒ}ƒ“ƒhƒ‰ƒCƒ“‚É•\¦‚³‚ê‚é
+	["postD[elicious]"],//ã‚³ãƒãƒ³ãƒ‰å
+	"this plugin posts Delicious your bookmark",//ã‚³ãƒãƒ³ãƒ‰ã«é–¢ã™ã‚‹èª¬æ˜ï¼Œã‚³ãƒãƒ³ãƒ‰ãƒ©ã‚¤ãƒ³ã«è¡¨ç¤ºã•ã‚Œã‚‹
 	function(args){
-	var pageUrl = gBrowser.selectedBrowser.contentDocument.documentURI;//“Še‚µ‚½‚¢ƒy[ƒW‚ÌURI(URL)‚Ìæ“¾
-	//liberator.echo("tags:" + args["-tags"]);//“ü—Í‚³‚ê‚½ƒ^ƒOˆê——‚Ì•\¦DƒfƒoƒbƒO—p
-	var pageTitle = gBrowser.selectedBrowser.contentTitle;//“Še‚·‚éƒy[ƒW‚Ìƒ^ƒCƒgƒ‹‚Ìæ“¾
-	//liberator.echo("comment:" + args["-comment"]);//“ü—Í‚³‚ê‚½ƒRƒƒ“ƒg‚Ì•\¦DƒfƒoƒbƒO—p
-	var postUri = "https://api.del.icio.us/v1/posts/add?";//Delicious‚ÌAPI‚Ìg‚¤‚½‚ß‚ÌURI‚Ìæ“ª•”•ªC‚±‚±‚É&tags,&url‚Æ‚©‚ğ’Ç‰Á‚µ‚Ä‘—M‚·‚é‚±‚Æ‚ÅAPI‚ğÀs‚³‚¹‚é
-	postUri = postUri + "url=" + encodeURI(pageUrl);//URI‚Ì’Ç‰Á
-	postUri = postUri + "&description=" + encodeURI(pageTitle);//ƒ^ƒCƒgƒ‹‚Ì’Ç‰Á
-	if(args["-comment"] != null) postUri = postUri + "&extended=" + encodeURI(args["-comment"]);//‚à‚µƒRƒƒ“ƒgƒIƒvƒVƒ‡ƒ“‚É‹Lq‚ª‚ ‚ê‚ÎƒRƒƒ“ƒgiextended)‚ğ’Ç‰Á
-	var tags = args["-tags"];//ƒIƒvƒVƒ‡ƒ“‚Å“ü—Í‚³‚ê‚½ƒ^ƒO‚ğ tags@‚É‘ã“ü
+	var pageUrl = gBrowser.selectedBrowser.contentDocument.documentURI;//æŠ•ç¨¿ã—ãŸã„ãƒšãƒ¼ã‚¸ã®URI(URL)ã®å–å¾—
+	//liberator.echo("tags:" + args["-tags"]);//å…¥åŠ›ã•ã‚ŒãŸã‚¿ã‚°ä¸€è¦§ã®è¡¨ç¤ºï¼ãƒ‡ãƒãƒƒã‚°ç”¨
+	var pageTitle = gBrowser.selectedBrowser.contentTitle;//æŠ•ç¨¿ã™ã‚‹ãƒšãƒ¼ã‚¸ã®ã‚¿ã‚¤ãƒˆãƒ«ã®å–å¾—
+	//liberator.echo("comment:" + args["-comment"]);//å…¥åŠ›ã•ã‚ŒãŸã‚³ãƒ¡ãƒ³ãƒˆã®è¡¨ç¤ºï¼ãƒ‡ãƒãƒƒã‚°ç”¨
+	var postUri = "https://api.del.icio.us/v1/posts/add?";//Deliciousã®APIã®ä½¿ã†ãŸã‚ã®URIã®å…ˆé ­éƒ¨åˆ†ï¼Œã“ã“ã«&tags,&urlã¨ã‹ã‚’è¿½åŠ ã—ã¦é€ä¿¡ã™ã‚‹ã“ã¨ã§APIã‚’å®Ÿè¡Œã•ã›ã‚‹
+	postUri = postUri + "url=" + encodeURI(pageUrl);//URIã®è¿½åŠ 
+	postUri = postUri + "&description=" + encodeURI(pageTitle);//ã‚¿ã‚¤ãƒˆãƒ«ã®è¿½åŠ 
+	if(args["-comment"] != null) postUri = postUri + "&extended=" + encodeURI(args["-comment"]);//ã‚‚ã—ã‚³ãƒ¡ãƒ³ãƒˆã‚ªãƒ—ã‚·ãƒ§ãƒ³ã«è¨˜è¿°ãŒã‚ã‚Œã°ã‚³ãƒ¡ãƒ³ãƒˆï¼ˆextended)ã‚’è¿½åŠ 
+	var tags = args["-tags"];//ã‚ªãƒ—ã‚·ãƒ§ãƒ³ã§å…¥åŠ›ã•ã‚ŒãŸã‚¿ã‚°ã‚’ tagsã€€ã«ä»£å…¥
 	if(tags != null) 
 	{
-	postUri = postUri + "&tags=";//ƒ^ƒO‚ª“ü—Í‚³‚ê‚Ä‚¢‚ê‚Îƒ^ƒO‚Ì’Ç‰Á‚ğs‚È‚¤‚Ì‚ÅC&tags‚ğ’Ç‰Á
+	postUri = postUri + "&tags=";//ã‚¿ã‚°ãŒå…¥åŠ›ã•ã‚Œã¦ã„ã‚Œã°ã‚¿ã‚°ã®è¿½åŠ ã‚’è¡Œãªã†ã®ã§ï¼Œ&tagsã‚’è¿½åŠ 
 	for(var i=0;i<tags.length;i++)
 	{
-	    postUri = postUri + encodeURI(args["-tags"][i] + " ");//tags[1] tags[2] tags[n] ‚Æ‚È‚é‚æ‚¤‚Éæ“¾‚µ‚½ƒ^ƒO‚ğ&tagsˆÈ~‚É‘±‚¯‚Ä‚¢‚­
+	    postUri = postUri + encodeURI(args["-tags"][i] + " ");//tags[1] tags[2] tags[n] ã¨ãªã‚‹ã‚ˆã†ã«å–å¾—ã—ãŸã‚¿ã‚°ã‚’&tagsä»¥é™ã«ç¶šã‘ã¦ã„ã
 	}
 	}
-	//liberator.echo("encoded postUri:" + postUri);//ÅI“I‚É‘—M‚·‚éURI‚Ì•\¦DƒfƒoƒbƒO—p
-	var request = new XMLHttpRequest();//XMLHttpRequest‚ğg‚Á‚Ä’ÊM‚ğs‚È‚¤
-	//request.open("GET",postUri,false,name,pass);//‘æ4,5ˆø”‚Íbasic”FØ‚É•K—v‚Æ‚È‚éD‘æ1ˆø”‚ğ"POST"‚É•ÏX‚·‚é‚ÆPOSTƒƒ\ƒbƒh‚ğ—p‚¢‚éD‘æ‚Rˆø”‚ğtrue‚É‚·‚é‚Æ”ñ“¯Šú’ÊM‚ğs‚È‚¤
-	request.open("GET",postUri,false);//‘æ1ˆø”‚ğ"POST"‚É•ÏX‚·‚é‚ÆPOSTƒƒ\ƒbƒh‚ğ—p‚¢‚éD‘æ‚Rˆø”‚ğtrue‚É‚·‚é‚Æ”ñ“¯Šú’ÊM‚ğs‚È‚¤
-	request.setRequestHeader('Content-Type', 'application/post2delplugin');//‘æ‚Qˆø”‚Ìİ’è‚ğ‚Ç‚¤‚·‚é‚Ì‚©—Ç‚­•ª‚©‚ç‚È‚¢‚ÅŸè‚ÉŒˆ‚ß‚½.deliciousAPIƒwƒ‹ƒv‚Éƒ†ƒj[ƒN‚È–¼‘O‚ğg‚¤‚×‚«“I‚È‚±‚Æ‚ª‘‚¢‚Ä‚ ‚Á‚½‚æ‚¤‚È...
-	request.send("");//ƒŠƒNƒGƒXƒg‚ğ‘—M‚·‚é
-	if(request.status == 200) liberator.echo("succsessd!");//’ÊM‚É¬Œ÷‚µ‚½‚ç200‚ª•Ô‚Á‚Ä‚­‚é‚Ì‚Å¬Œ÷‚µ‚½‚±‚Æ‚ğ•\¦‚·‚é
-	else liberator.echo("failed!");//¸”s‚µ‚½‚Æ‚«‚Í‚±‚Á‚¿‚ğ•\¦‚·‚é
+	//liberator.echo("encoded postUri:" + postUri);//æœ€çµ‚çš„ã«é€ä¿¡ã™ã‚‹URIã®è¡¨ç¤ºï¼ãƒ‡ãƒãƒƒã‚°ç”¨
+	var request = new XMLHttpRequest();//XMLHttpRequestã‚’ä½¿ã£ã¦é€šä¿¡ã‚’è¡Œãªã†
+	//request.open("GET",postUri,false,name,pass);//ç¬¬4,5å¼•æ•°ã¯basicèªè¨¼ã«å¿…è¦ã¨ãªã‚‹ï¼ç¬¬1å¼•æ•°ã‚’"POST"ã«å¤‰æ›´ã™ã‚‹ã¨POSTãƒ¡ã‚½ãƒƒãƒ‰ã‚’ç”¨ã„ã‚‹ï¼ç¬¬ï¼“å¼•æ•°ã‚’trueã«ã™ã‚‹ã¨éåŒæœŸé€šä¿¡ã‚’è¡Œãªã†
+	request.open("GET",postUri,false);//ç¬¬1å¼•æ•°ã‚’"POST"ã«å¤‰æ›´ã™ã‚‹ã¨POSTãƒ¡ã‚½ãƒƒãƒ‰ã‚’ç”¨ã„ã‚‹ï¼ç¬¬ï¼“å¼•æ•°ã‚’trueã«ã™ã‚‹ã¨éåŒæœŸé€šä¿¡ã‚’è¡Œãªã†
+	request.setRequestHeader('Content-Type', 'application/post2delplugin');//ç¬¬ï¼’å¼•æ•°ã®è¨­å®šã‚’ã©ã†ã™ã‚‹ã®ã‹è‰¯ãåˆ†ã‹ã‚‰ãªã„ã§å‹æ‰‹ã«æ±ºã‚ãŸ.deliciousAPIãƒ˜ãƒ«ãƒ—ã«ãƒ¦ãƒ‹ãƒ¼ã‚¯ãªåå‰ã‚’ä½¿ã†ã¹ãçš„ãªã“ã¨ãŒæ›¸ã„ã¦ã‚ã£ãŸã‚ˆã†ãª...
+	request.send("");//ãƒªã‚¯ã‚¨ã‚¹ãƒˆã‚’é€ä¿¡ã™ã‚‹
+	if(request.status == 200) liberator.echo("succsessd!");//é€šä¿¡ã«æˆåŠŸã—ãŸã‚‰200ãŒè¿”ã£ã¦ãã‚‹ã®ã§æˆåŠŸã—ãŸã“ã¨ã‚’è¡¨ç¤ºã™ã‚‹
+	else liberator.echo("failed!");//å¤±æ•—ã—ãŸã¨ãã¯ã“ã£ã¡ã‚’è¡¨ç¤ºã™ã‚‹
 	},
 {
 options: [
