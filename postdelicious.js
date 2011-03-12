@@ -13,7 +13,7 @@ commands.addUserCommand(
 	var postUrl = "https://api.del.icio.us/v1/posts/add?";//DeliciousのAPIの使うためのURIの先頭部分，ここに&tags,&urlとかを追加して送信することでAPIを実行させる
 	postUrl = postUrl + "url=" + encodeURI(pageUrl);//URIの追加
 	postUrl = postUrl + "&description=" + encodeURI(pageTitle);//タイトルの追加
-	if(args["-comment"] != null) postUrl = postUrl + "&extended=" + encodeURI(args["-comment"]);//もしコメントオプションに記述があればコメント（extended)を追加
+	if(args["-comment"] != null) postUrl = postUrl + "&extended=" + encodeURI(args["-comment"].replace(" ","_"));//もしコメントオプションに記述があればコメント（extended)を追加
 	var tags = args["-tags"];//オプションで入力されたタグを tags　に代入
 	if(tags != null) 
 	{
